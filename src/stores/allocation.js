@@ -107,6 +107,25 @@ export const useAllocationStore = defineStore('allocation', () => {
     }
   }
 
+  function importConfiguration(importedAllocations, importedIncome) {
+    // Replace allocations with imported ones
+    allocations.value = importedAllocations.map(alloc => ({
+      id: alloc.id,
+      name: alloc.name,
+      percentage: alloc.percentage,
+      color: alloc.color || 'bg-gray-500'
+    }))
+    
+    // Set income amount if provided
+    if (typeof importedIncome === 'number' && importedIncome >= 0) {
+      incomeAmount.value = importedIncome
+    }
+    
+    // Save to localStorage
+    saveAllocations()
+    saveIncomeAmount()
+  }
+
   return {
     allocations,
     incomeAmount,
@@ -117,6 +136,7 @@ export const useAllocationStore = defineStore('allocation', () => {
     addAllocation,
     removeAllocation,
     resetToDefaults,
-    updateAllocationName
+    updateAllocationName,
+    importConfiguration
   }
 })
