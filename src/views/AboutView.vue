@@ -104,7 +104,9 @@
       </p>
       <p class="text-sm text-gray-600">
         Learn more about the methodology in Mike Michalowicz's book 
-        <span class="font-semibold">"Profit First: Transform Your Business from a Cash-Eating Monster to a Money-Making Machine"</span>
+        <a href="https://profitfirstbook.com" target="_blank" rel="noopener noreferrer" class="font-semibold text-profit-green hover:text-green-700">
+          "Profit First: Transform Your Business from a Cash-Eating Monster to a Money-Making Machine"
+        </a>
       </p>
     </div>
   </div>

@@ -81,6 +81,8 @@ Profit First is a cash management system developed by Mike Michalowicz that help
 
 By allocating profit first, you ensure your business remains profitable from day one.
 
+Learn more at [profitfirstbook.com](https://profitfirstbook.com)
+
 ## Author
 
 **Kevin Griffin**  
