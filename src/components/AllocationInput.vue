@@ -1,8 +1,8 @@
 <template>
   <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
-    <div class="relative">
+    <div class="relative color-picker-container">
       <button
-        @click="showColorPicker = !showColorPicker"
+        @click.stop="showColorPicker = !showColorPicker"
         :class="allocation.color"
         class="w-8 h-8 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-gray-400 transition-all"
         title="Click to change color"
@@ -11,12 +11,13 @@
       <div
         v-if="showColorPicker"
         class="absolute z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-3"
+        @click.stop
       >
         <div class="grid grid-cols-4 gap-2">
           <button
             v-for="color in availableColors"
             :key="color"
-            @click="selectColor(color)"
+            @click.stop="selectColor(color)"
             :class="color"
             class="w-8 h-8 rounded-full hover:ring-2 hover:ring-gray-400 transition-all"
             :title="color"
@@ -80,7 +81,9 @@ const showColorPicker = ref(false)
 
 // Close color picker when clicking outside
 const handleClickOutside = (event) => {
-  if (showColorPicker.value && !event.target.closest('.relative')) {
+  // Check if the click is outside the color picker area
+  const colorPickerEl = event.target.closest('.color-picker-container')
+  if (showColorPicker.value && !colorPickerEl) {
     showColorPicker.value = false
   }
 }
