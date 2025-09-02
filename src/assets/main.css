@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-profit-green: #10b981;
+  --color-tax-blue: #3b82f6;
+  --color-owner-purple: #8b5cf6;
+  --color-opex-orange: #f97316;
+}

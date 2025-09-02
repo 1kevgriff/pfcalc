@@ -6,7 +6,7 @@
         <div class="flex items-center space-x-2">
           <button
             @click="exportConfig"
-            class="px-4 py-2 text-sm font-medium text-profit-green bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
+            class="px-4 py-2 text-sm font-medium text-green-500 bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
             title="Export configuration"
           >
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@
           </button>
           <button
             @click="triggerImport"
-            class="px-4 py-2 text-sm font-medium text-profit-green bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
+            class="px-4 py-2 text-sm font-medium text-green-500 bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
             title="Import configuration"
           >
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,12 +82,12 @@
             @keyup.enter="addNewAllocation"
             type="text"
             placeholder="New allocation name"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-profit-green focus:border-transparent"
+            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           >
           <button
             @click="addNewAllocation"
             :disabled="!newAllocationName.trim()"
-            class="px-4 py-2 bg-profit-green text-white font-medium rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            class="px-4 py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             Add Allocation
           </button>

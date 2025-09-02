@@ -15,7 +15,7 @@
             type="number"
             min="0"
             step="0.01"
-            class="pl-8 w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-profit-green focus:border-transparent text-lg"
+            class="pl-8 w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-lg"
             placeholder="0.00"
           >
         </div>

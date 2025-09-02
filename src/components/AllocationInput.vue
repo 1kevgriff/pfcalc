@@ -6,7 +6,7 @@
       :value="allocation.name"
       @input="$emit('update-name', $event.target.value)"
       type="text"
-      class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-profit-green focus:border-transparent"
+      class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
       placeholder="Allocation name"
     >
     
@@ -18,7 +18,7 @@
         min="0"
         max="100"
         step="0.1"
-        class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-profit-green focus:border-transparent text-center"
+        class="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-center"
       >
       <span class="text-gray-600 font-medium">%</span>
     </div>
