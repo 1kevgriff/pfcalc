@@ -43,7 +43,7 @@
     <footer class="mt-auto py-4 text-center text-sm text-gray-500">
       <p>
         Created by <router-link to="/about" class="text-profit-green hover:text-green-700 font-medium">Kevin Griffin</router-link> 
-        | Based on Profit First by Mike Michalowicz
+        | Based on <a href="https://profitfirstbook.com" target="_blank" rel="noopener noreferrer" class="text-profit-green hover:text-green-700 font-medium">Profit First</a> by Mike Michalowicz
       </p>
     </footer>
   </div>
