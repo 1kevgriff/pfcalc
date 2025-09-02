@@ -1,30 +1,6 @@
 <template>
   <div class="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg">
-    <div class="relative color-picker-container">
-      <button
-        @click.stop="showColorPicker = !showColorPicker"
-        :class="allocation.color"
-        class="w-8 h-8 rounded-full flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-gray-400 transition-all"
-        title="Click to change color"
-      ></button>
-      
-      <div
-        v-if="showColorPicker"
-        class="absolute z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-3"
-        @click.stop
-      >
-        <div class="grid grid-cols-4 gap-2">
-          <button
-            v-for="color in availableColors"
-            :key="color"
-            @click.stop="selectColor(color)"
-            :class="color"
-            class="w-8 h-8 rounded-full hover:ring-2 hover:ring-gray-400 transition-all"
-            :title="color"
-          ></button>
-        </div>
-      </div>
-    </div>
+    <div :class="allocation.color" class="w-4 h-4 rounded-full flex-shrink-0"></div>
     
     <input
       :value="allocation.name"
@@ -62,8 +38,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
 const props = defineProps({
   allocation: {
     type: Object,
@@ -75,53 +49,10 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update', 'update-name', 'update-color', 'remove'])
-
-const showColorPicker = ref(false)
-
-// Close color picker when clicking outside
-const handleClickOutside = (event) => {
-  // Check if the click is outside the color picker area
-  const colorPickerEl = event.target.closest('.color-picker-container')
-  if (showColorPicker.value && !colorPickerEl) {
-    showColorPicker.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
-
-const availableColors = [
-  'bg-profit-green',
-  'bg-tax-blue', 
-  'bg-owner-purple',
-  'bg-opex-orange',
-  'bg-red-500',
-  'bg-pink-500',
-  'bg-yellow-500',
-  'bg-green-500',
-  'bg-blue-500',
-  'bg-indigo-500',
-  'bg-purple-500',
-  'bg-gray-500',
-  'bg-teal-500',
-  'bg-cyan-500',
-  'bg-amber-500',
-  'bg-rose-500'
-]
+const emit = defineEmits(['update', 'update-name', 'remove'])
 
 function updatePercentage(value) {
   const percentage = parseFloat(value) || 0
   emit('update', percentage)
-}
-
-function selectColor(color) {
-  emit('update-color', color)
-  showColorPicker.value = false
 }
 </script>
