@@ -63,6 +63,7 @@
           :allocation="allocation"
           @update="store.updateAllocation(allocation.id, $event)"
           @update-name="store.updateAllocationName(allocation.id, $event)"
+          @update-color="store.updateAllocationColor(allocation.id, $event)"
           @remove="store.removeAllocation(allocation.id)"
           :can-remove="store.allocations.length > 1"
         />

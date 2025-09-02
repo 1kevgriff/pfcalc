@@ -107,6 +107,13 @@ export const useAllocationStore = defineStore('allocation', () => {
     }
   }
 
+  function updateAllocationColor(id, newColor) {
+    const allocation = allocations.value.find(a => a.id === id)
+    if (allocation) {
+      allocation.color = newColor
+    }
+  }
+
   function importConfiguration(importedAllocations, importedIncome) {
     // Replace allocations with imported ones
     allocations.value = importedAllocations.map(alloc => ({
@@ -137,6 +144,7 @@ export const useAllocationStore = defineStore('allocation', () => {
     removeAllocation,
     resetToDefaults,
     updateAllocationName,
+    updateAllocationColor,
     importConfiguration
   }
 })
