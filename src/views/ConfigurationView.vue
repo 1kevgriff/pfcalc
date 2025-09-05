@@ -1,12 +1,17 @@
 <template>
-  <div class="space-y-8">
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  <div class="space-y-8 animate-fadeIn">
+    <div class="glass-effect rounded-xl shadow-xl border border-white/20 p-6 hover-lift card-shine">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-900">Configure Allocations</h2>
+        <h2 class="text-2xl font-bold text-gradient flex items-center">
+          <svg class="w-8 h-8 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+          </svg>
+          Configure Accounts
+        </h2>
         <div class="flex items-center space-x-2">
           <button
             @click="exportConfig"
-            class="px-4 py-2 text-sm font-medium text-green-500 bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
+            class="px-4 py-2 text-sm font-medium text-white btn-gradient rounded-lg transition-all duration-300 flex items-center hover:shadow-lg"
             title="Export configuration"
           >
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -16,7 +21,7 @@
           </button>
           <button
             @click="triggerImport"
-            class="px-4 py-2 text-sm font-medium text-green-500 bg-green-50 hover:bg-green-100 rounded-lg transition-colors flex items-center"
+            class="px-4 py-2 text-sm font-medium text-white btn-gradient rounded-lg transition-all duration-300 flex items-center hover:shadow-lg"
             title="Import configuration"
           >
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -26,7 +31,7 @@
           </button>
           <button
             @click="store.resetToDefaults"
-            class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-md"
           >
             Reset to Defaults
           </button>
@@ -41,7 +46,7 @@
         class="hidden"
       />
 
-      <div v-if="!store.isValid" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+      <div v-if="!store.isValid" class="mb-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-lg animate-slideIn">
         <div class="flex items-center">
           <svg class="w-5 h-5 text-red-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
@@ -68,7 +73,7 @@
         />
       </div>
 
-      <div class="mt-6 pt-6 border-t border-gray-200">
+      <div class="mt-6 pt-6 border-t border-gray-200 animate-fadeIn">
         <div class="flex justify-between items-center mb-4">
           <span class="text-lg font-semibold text-gray-900">Total Percentage</span>
           <span class="text-lg font-semibold" :class="store.isValid ? 'text-green-600' : 'text-red-600'">
@@ -78,27 +83,32 @@
 
         <div class="flex items-center space-x-3">
           <input
-            v-model="newAllocationName"
-            @keyup.enter="addNewAllocation"
+            v-model="newAccountName"
+            @keyup.enter="addNewAccount"
             type="text"
-            placeholder="New allocation name"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            placeholder="New account name"
+            class="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent input-glow transition-all duration-300"
           >
           <button
-            @click="addNewAllocation"
-            :disabled="!newAllocationName.trim()"
-            class="px-4 py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            @click="addNewAccount"
+            :disabled="!newAccountName.trim()"
+            class="px-5 py-2.5 btn-gradient text-white font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg"
           >
-            Add Allocation
+            Add Account
           </button>
         </div>
       </div>
     </div>
 
-    <div class="bg-green-50 rounded-lg p-6">
-      <h3 class="text-lg font-semibold text-green-900 mb-3">Profit First Guidelines</h3>
+    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-lg hover-lift card-shine animate-fadeIn" style="animation-delay: 0.2s">
+      <h3 class="text-lg font-semibold text-gradient mb-3 flex items-center">
+        <svg class="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        Profit First Guidelines
+      </h3>
       <div class="space-y-2 text-sm text-green-800">
-        <p class="font-medium">Recommended allocations for businesses under $250K revenue:</p>
+        <p class="font-medium">Recommended accounts for businesses under $250K revenue:</p>
         <ul class="space-y-1 ml-4">
           <li>• <span class="font-medium">Profit:</span> 5%</li>
           <li>• <span class="font-medium">Owner's Pay:</span> 50%</li>
@@ -111,9 +121,9 @@
       </div>
     </div>
 
-    <div class="bg-blue-50 rounded-lg p-4">
-      <div class="space-y-2">
-        <div class="flex items-center">
+    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-5 shadow-lg hover-lift card-shine animate-fadeIn" style="animation-delay: 0.3s">
+      <div class="space-y-3">
+        <div class="flex items-center group">
           <svg class="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
           </svg>
@@ -135,13 +145,13 @@ import { useAllocationStore } from '../stores/allocation'
 import AllocationInput from '../components/AllocationInput.vue'
 
 const store = useAllocationStore()
-const newAllocationName = ref('')
+const newAccountName = ref('')
 const importInput = ref(null)
 
-function addNewAllocation() {
-  if (newAllocationName.value.trim()) {
-    store.addAllocation(newAllocationName.value.trim())
-    newAllocationName.value = ''
+function addNewAccount() {
+  if (newAccountName.value.trim()) {
+    store.addAllocation(newAccountName.value.trim())
+    newAccountName.value = ''
   }
 }
 
@@ -180,14 +190,14 @@ function handleImport(event) {
       
       // Validate the imported data
       if (!config.allocations || !Array.isArray(config.allocations)) {
-        alert('Invalid configuration file: missing allocations')
+        alert('Invalid configuration file: missing accounts')
         return
       }
       
-      // Validate each allocation
+      // Validate each account
       for (const allocation of config.allocations) {
         if (!allocation.id || !allocation.name || typeof allocation.percentage !== 'number') {
-          alert('Invalid configuration file: malformed allocation data')
+          alert('Invalid configuration file: malformed account data')
           return
         }
       }
